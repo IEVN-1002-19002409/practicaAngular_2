@@ -1,0 +1,14 @@
+<div>
+    <label for="celsius">Grados Celsius:</label>
+    <input type="number" [(ngModel)]="celsius" id="celsius">
+    <button (click)="convertir()">Convertir</button>
+  </div>
+  <div>
+    <label>Tipo de conversión:</label>
+    <input type="radio" [(ngModel)]="conversionType" value="celsiusToFahrenheit"> Celsius a Fahrenheit
+    <input type="radio" [(ngModel)]="conversionType" value="fahrenheitToCelsius"> Fahrenheit a Celsius
+  </div>
+  <div *ngIf="fahrenheit !== undefined">
+    <p>Resultado: {{ fahrenheit }}</p>
+  </div>
+  
