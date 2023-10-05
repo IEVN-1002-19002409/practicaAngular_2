@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Numero 1</h2>
+            <input type="number" [(ngModel)]="numero1" class="form-control" placeholder="Ingresa numero 1">
+            <h2>Numero 2</h2>
+            <input type="number" [(ngModel)]="numero2" class="form-control" placeholder="Ingresa numero 2">
+            <button class="btn btn-primary mt-3" (click)="calcularResultado()">Calcular</button>
+        </div>
+        <div class="col-md-6">
+            <h2>Resultado</h2>
+            <p>{{resultado}}</p>
+        </div>
+    </div>
+</div>
