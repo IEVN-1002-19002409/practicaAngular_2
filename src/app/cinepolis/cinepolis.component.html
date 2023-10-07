@@ -1,94 +1,79 @@
-
 <div class="row">
-
     <div class="col-12 mt-3 mb-3 text-center">
-        <div class="border-3 border-primary">
-          <h5 class="fs-2">Cinepolis</h5>
-        </div>
+      <div class="border-3 border-primary">
+        <h5 class="fs-2">Cinepolis</h5>
+      </div>
     </div>
-
-
     <div class="col-6 row">
-        <div class="mb-3 ">
-            <div class="card">
-                <h5 class="card-header fs-6">Entradas</h5>
-                <div class="card-body">
-                                             
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Nombre</span>
-                        <div class="form-floating">
-                          <input type="text" class="form-control" [(ngModel)]="nombrePersona" placeholder="...">
-                        </div>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Num. de boletos</span>
-                        <div class="form-floating">
-                          <input type="number" class="form-control" [(ngModel)]="numBoletas" (input)="actualizarMaxBoletas()" placeholder="...">
-                        </div>
-                    </div>
-                      
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Tarjeta Cineco</span>
-                        <div class="form-floating px-4 row align-items-center">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" [(ngModel)]="tarjetaCineco">
-                                <label class="form-check-label" for="inlineRadio1">Sí</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" [(ngModel)]="tarjetaCineco">
-                                <label class="form-check-label" for="inlineRadio    2">No</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Cantidad de compradores</span>
-                        <div class="form-floating">
-                            <input type="number" class="form-control" id="floatingInputGroup1" placeholder="...">
-                        </div>
-                    </div>
-                    
-                </div>
+      <div class="mb-3">
+        <div class="card">
+          <h5 class="card-header fs-6">Entradas</h5>
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Nombre</span>
+              <div class="form-floating">
+                <input type="text" class="form-control" [(ngModel)]="nombrePersona" placeholder="...">
+              </div>
             </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Num. de boletos</span>
+                <div class="form-floating">
+                  <input type="number" class="form-control" [(ngModel)]="numBoletas"  placeholder="..." [max]="maxBoletasCompradas" min="1" max="35">
+                </div>
+              </div>
+             
+              
+              
+            <div class="input-group mb-3">
+              <span class="input-group-text">Tarjeta Cineco</span>
+              <div class="form-floating px-4 row align-items-center">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="tarjetaCinecoCheckbox" [(ngModel)]="tarjetaCineco">
+                  <label class="form-check-label" for="tarjetaCinecoCheckbox">Sí</label>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Cantidad de compradores</span>
+              <div class="form-floating">
+                <input type="number" class="form-control" id="floatingInputGroup1" placeholder="..." [(ngModel)]="numCompradores">
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-
-
     <div class="col-6 row align-items-center">
-        <div class="mb-3 ">
-            <div class="card">
-                <h5 class="card-header fs-6">Salida</h5>
-                <div class="card-body">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Valor a pagar</span>
-                        <div class="form-floating">
-                            <p>Nombre de la persona: {{ nombrePersona }}</p>
-                            <p>Cantidad de boletos comprados: {{ maxBoletasCompradas }}</p>
-                            <p>Precio a pagar: ${{ precioAPagar }}</p>
-                            
-                        </div>
-                    </div>
-                </div>
+      <div class="mb-3">
+        <div class="card">
+          <h5 class="card-header fs-6">Salida</h5>
+          <div class="card-body">
+            <div class="input-group mb-3">
+              <span class="input-group-text">Valor a pagar</span>
+              <div class="form-floating">
+                <p>Nombre de la persona: {{ nombrePersona }}</p>
+                <p>Precio a pagar: ${{ precioAPagar }}</p>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-
-    <div class="col-5 row" ></div>
-    <div class="col-2 row" >
-        <div class="mb-3 ">
-            <div class="card">
-                <h5 class="card-header fs-6">Salida</h5>
-                <div class="card-body">
-                    <div class="form-floating px-4">
-                        <div class="btn-group" >
-                            <button type="button" class="btn btn-primary" style="width: 7rem;" (click)="procesarCompra()">Procesar</button>
-                        </div>
-                    </div>
-                </div>
+    <div class="col-5 row"></div>
+    <div class="col-2 row">
+      <div class="mb-3">
+        <div class="card">
+          <h5 class="card-header fs-6">Salida</h5>
+          <div class="card-body">
+            <div class="form-floating px-4">
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary" style="width: 7rem;" (click)="calcularPrecio = true; procesarCompra()">Procesar</button>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="col-4 row" ></div>
-</div>
+    <div class="col-4 row"></div>
+  </div>
+  
